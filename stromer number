@@ -1,0 +1,116 @@
+#include<iostream>
+using namespace std;
+
+int prime(int n)
+{
+	for(int i=2;i<n;i++)
+	{
+		if(n%i==0)
+		{
+			return 0;
+		}
+	}
+	return 1;
+}
+int lar_prime(int n)
+{
+	int lar=1;
+	for(int i=1;i<=n;i++)
+	{
+		int check=prime(i);
+		if(check==1 && n%i==0)
+		{
+			lar=i;
+		}
+	}
+	return lar;
+}
+int main()
+{
+	int n;
+    cout<<"Enter the no: ";
+    cin>>n;
+    int j=(n*n)+1;
+    if(lar_prime(j)>=2*n)
+    {
+        cout<<"Strommer number";
+    }
+    else
+    {
+        cout<<"Not a strommer number";
+    }
+}
+//another way
+// C++ program to print
+// Stormer numbers
+// Function to find
+// largest prime factor
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int maxPrimeFactors(int n)
+{
+	// Initialize the maximum
+	// prime factor variable
+	// with the lowest one
+	int maxPrime = -1;
+
+	// Print the number of
+	// 2's that divide n
+	while(n % 2 == 0)
+	{
+		maxPrime = 2;
+		n /= 2;
+	}
+
+	// n must be odd at this
+	// point, thus skip the
+	// even numbers and iterate
+	// only for odd integers
+	for(int i = 3; i < (int)(sqrt(n)+ 1); i += 2)
+		while(n % i == 0)
+		{
+			maxPrime = i;
+			n /= i;
+		}
+
+	// This condition is to handle
+	// the case when n is a prime
+	// number greater than 2
+	if (n > 2)
+		maxPrime = n;
+
+	return (int)(maxPrime);
+}
+
+// Function to generate
+// Stormer Numbers
+int stormer(int n)
+{
+	int i = 1;
+	
+	// Stores the number of
+	// Stormer numbers found
+	int count = 0;
+	while(count < n)
+	{
+		int t = i * i + 1;
+		if (maxPrimeFactors(t) >= 2 * i)
+		{
+			cout << i ;
+			cout <<" ";
+			count += 1;
+		}
+		i += 1;
+	}
+	return i;
+}
+
+	// Driver Code
+int main() {
+
+	int n = 10;
+	stormer(n);
+
+	}
