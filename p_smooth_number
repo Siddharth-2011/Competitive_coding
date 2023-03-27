@@ -1,0 +1,34 @@
+// p smooth number
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+	int a,i,j,p;
+	cout<<"enter the number whose prime factors is to be found\n";
+	cin>>a;
+	int temp1=a;
+	vector<int> arr;
+	int c=2;
+    while(a>1)
+    {
+        if(a%c==0)
+		{
+        	arr.push_back(c);
+        	a/=c;
+        }
+        else c++;
+    }
+    sort(arr.begin(),arr.end());
+    cout<<"enter the p number\n";
+    cin>>p;
+	cout<<endl;
+    int last=arr.size();
+    if(arr[last-1]<=p)
+    {
+    	cout<<arr[last-1]<<"is a p smooth number"<<endl;
+	}
+	else
+	{
+		cout<<temp1<<" is not a p smooth number for p="<<p;
+	}
+}
