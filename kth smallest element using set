@@ -1,0 +1,26 @@
+//kth smallest using set 
+#include <bits/stdc++.h>
+using namespace std;
+int main()
+{
+	int n;
+	cout<<"enter the size of array\n";
+	cin>>n;
+	cout<<"enter array\n";
+	int arr[n],k;
+	for(int i;i<n;i++)
+	{
+		cin>>arr[i];
+	}
+	cout<<"enter the value of k\n";
+	cin>>k;
+
+	set<int> s(arr, arr + n);
+
+	// s.begin() returns a pointer to first
+	// element in the set
+	set<int>::iterator itr = s.begin();
+	advance(itr, k - 1); // itr points to kth element in set
+	cout <<"the kth smallest element is"<< *itr << "\n";
+	return 0;
+}
