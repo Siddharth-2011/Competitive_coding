@@ -20,7 +20,9 @@ int main()
 	// s.begin() returns a pointer to first
 	// element in the set
 	set<int>::iterator itr = s.begin();
-	advance(itr, k - 1); // itr points to kth element in set
+	advance(itr, k-1); // itr points to kth element in set
 	cout <<"the kth smallest element is"<< *itr << "\n";
+	advance(itr, n-k); // itr points to kth element in set
+	cout <<"the kth largest element is"<< *itr << "\n";
 	return 0;
 }
